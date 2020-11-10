@@ -16,7 +16,7 @@ class MonsterClient(
 
     fun sayMessage(message: String): String {
 
-        val uri = UriComponentsBuilder.fromHttpUrl("http://localhost:8081/say")
+        val uri = UriComponentsBuilder.fromHttpUrl("http://localhost:8081/sayMessage")
                 .queryParam("message", message)
                 .encode(Charsets.UTF_8)
                 .build().toUri()
