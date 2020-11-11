@@ -1,10 +1,16 @@
 package com.sabbath.monster.service
 
 import com.github.ricksbrown.cowsay.plugin.CowExecutor
+import mu.KotlinLogging
+import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Service
+
+private val logger = KotlinLogging.logger {}
 
 @Service
 class MonsterServiceImpl(
+        @Value("\${monster.random:false}")
+        private val randomMode: Boolean = false,
         private val cowExecutor: CowExecutor = CowExecutor().apply {
             setHtml(true)
         }
@@ -12,8 +18,12 @@ class MonsterServiceImpl(
     override fun sayMessage(message: String): String {
         with(cowExecutor) {
             setMessage(message)
-            setCowfile(monsters.random())
-            return execute()
+            if (randomMode) {
+                setCowfile(monsters.random())
+            }
+            val monster = execute()
+            logger.info("Сгенерирован монстр: $monster")
+            return monster
         }
     }
 }

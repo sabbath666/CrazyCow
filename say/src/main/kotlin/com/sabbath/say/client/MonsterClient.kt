@@ -4,8 +4,6 @@ import mu.KotlinLogging
 import org.springframework.stereotype.Component
 import org.springframework.web.client.RestTemplate
 import org.springframework.web.util.UriComponentsBuilder
-import org.springframework.web.util.UriUtils
-import java.nio.charset.Charset
 
 private val logger = KotlinLogging.logger {}
 
