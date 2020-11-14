@@ -1,6 +1,7 @@
 package com.sabbath.say.client
 
 import mu.KotlinLogging
+import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Component
 import org.springframework.web.client.RestTemplate
 
@@ -8,10 +9,12 @@ private val logger = KotlinLogging.logger {}
 
 @Component
 class QuoteClient(
-        private val restTemplate: RestTemplate
+        private val restTemplate: RestTemplate,
+        @Value("\${quote.url}")
+        private val quoteUrl:String
 ) {
     fun getQuote():String {
-        val quote = restTemplate.getForObject("http://localhost:8080/getQuote", String::class.java) ?: ""
+        val quote = restTemplate.getForObject(quoteUrl, String::class.java) ?: ""
         logger.debug ("Получили цитату: $quote")
         return quote
     }

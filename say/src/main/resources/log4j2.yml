@@ -46,9 +46,9 @@ Configutation:
         - ref: CONSOLE_LOG
     Logger:
       - name: com.sabbath
-        level: debug
+        level: info
         AppenderRef:
           - ref: APP_LOG
-            level: debug
+            level: info
           - ref: CONSOLE_LOG
-            level: debug
+            level: info

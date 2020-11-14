@@ -1,0 +1,7 @@
+server:
+  port: 80
+
+quote.url: "http://localhost/getQuote"
+monster.url: "http://localhost/sayMessage"
+
+monster.random: false
