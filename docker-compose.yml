@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  monster:
+    image: sabbath666/monster
+    container_name: monster
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+    environment:
+      SPRING_PROFILES_ACTIVE: test
+    restart: always
+  quote:
+    image: sabbath666/quote
+    container_name: quote
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+    environment:
+      SPRING_PROFILES_ACTIVE: test
+    restart: always
+  say:
+    image: sabbath666/say
+    container_name: say
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+    environment:
+      SPRING_PROFILES_ACTIVE: test
+    restart: always

@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.sabbath</groupId>
-	<artifactId>qoute</artifactId>
+	<artifactId>quote</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>qoute</name>
+	<name>quote</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
@@ -113,6 +113,23 @@
 						<version>${kotlin.version}</version>
 					</dependency>
 				</dependencies>
+			</plugin>
+			<plugin>
+				<groupId>com.google.cloud.tools</groupId>
+				<artifactId>jib-maven-plugin</artifactId>
+				<version>2.6.0</version>
+				<configuration>
+					<from>
+						<image>openjdk:8-alpine</image>
+					</from>
+					<to>
+						<auth>
+							<username>${env.REGISTRY_USERNAME}</username>
+							<password>${env.REGISTRY_PASSWORD}</password>
+						</auth>
+						<image>sabbath666/${project.artifactId}</image>
+					</to>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
