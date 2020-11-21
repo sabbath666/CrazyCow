@@ -40,7 +40,7 @@ Configutation:
 
   Loggers:
     Root:
-      level: debug
+      level: info
       AppenderRef:
         - ref: ALL_LOG
         - ref: CONSOLE_LOG

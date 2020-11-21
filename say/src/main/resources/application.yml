@@ -1,2 +1,15 @@
 server:
   port: 8082
+spring:
+  application:
+    name: say
+  cloud:
+    consul:
+      host: 192.168.75.75
+      discovery:
+        instance-id: ${spring.application.name}
+        prefer-ip-address: true
+        ip-address: 192.168.75.1
+      config:
+        fail-fast: false
+        enabled: false

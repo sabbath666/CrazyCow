@@ -25,3 +25,12 @@ services:
     environment:
       SPRING_PROFILES_ACTIVE: test
     restart: always
+
+  consul:
+    image: consul
+    container_name: consul
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+    network_mode: host
+    command: "agent -server -ui -node=node-1 -bootstrap-expect=1 -client=0.0.0.0 -bind 192.168.75.75"
+    restart: always
