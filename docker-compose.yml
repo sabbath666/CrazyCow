@@ -25,7 +25,7 @@ services:
     environment:
       SPRING_PROFILES_ACTIVE: test
     restart: always
-
+#################### infrastructure ###################
   consul:
     image: consul
     container_name: consul
@@ -34,3 +34,23 @@ services:
     network_mode: host
     command: "agent -server -ui -node=node-1 -bootstrap-expect=1 -client=0.0.0.0 -bind 192.168.75.75"
     restart: always
+
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+    ports:
+      - 3000:3000
+    restart: always
+
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
+    volumes:
+      - /opt/prometheus:/etc/prometheus
+      - /etc/localtime:/etc/localtime:ro
+    ports:
+      - 9090:9090
+    restart: always
+
