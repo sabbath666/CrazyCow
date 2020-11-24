@@ -1,3 +1,4 @@
+team: command
 server:
   port: 8081
 
@@ -6,11 +7,12 @@ spring:
     name: monster
   cloud:
     consul:
-      host: 192.168.75.75
+      host: 167.71.174.253
+#      host: 192.168.75.75
       discovery:
-        instance-id: ${spring.application.name}
+        instance-id: ${spring.application.name}-${team}
         prefer-ip-address: true
-        ip-address: 192.168.75.1
+#        ip-address: 192.168.75.1
       config:
         fail-fast: true
         enabled: true
