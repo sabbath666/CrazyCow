@@ -1,0 +1,23 @@
+server:
+  port: 80
+
+spring:
+  application:
+    name: monster
+  boot:
+    admin:
+      client:
+        url: http://localhost:9999
+        username: admin
+        password: admin
+  zipkin:
+    base-url: 'http://zipkin:9411'
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+    enabled-by-default: true
+
+monster:
+  random: true

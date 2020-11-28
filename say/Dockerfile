@@ -1,4 +1,4 @@
-FROM openjdk:8-jdk-alpine
+FROM openjdk:14-jdk-alpine
 ARG JAR_FILE=target/*.jar
 ARG CONFIG_FILE=src/main/resources/application.yml
 COPY ${JAR_FILE} /application/application.jar

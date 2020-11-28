@@ -1,8 +1,0 @@
-server:
-  port: 8083
-
-quote.url: "http://quote/getQuote"
-monster.url: "http://monster/sayMessage"
-
-
-monster.random: false

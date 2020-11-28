@@ -1,0 +1,20 @@
+server:
+  port: 9999
+
+spring:
+  application:
+    name: admin
+  security:
+    user:
+      name: admin
+      password: admin
+  boot:
+    admin:
+      client:
+        username: admin
+        passsword: admin
+        instance:
+          metadata:
+            user.name: admin
+            user.password: admin
+

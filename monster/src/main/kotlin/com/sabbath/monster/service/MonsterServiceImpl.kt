@@ -5,19 +5,39 @@ import com.sabbath.monster.MonsterConfig
 import mu.KotlinLogging
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Service
+import java.io.File
+import javax.annotation.PostConstruct
 
 private val logger = KotlinLogging.logger {}
 
 @Service
 class MonsterServiceImpl(
+        @Value("\${monsters.location}")
+        val monstersLocation:String,
         val monsterConfig: MonsterConfig,
-//        @Value("\${monster.random:false}")
-//        private val randomMode: Boolean = false,
         private val cowExecutor: CowExecutor = CowExecutor().apply {
             setHtml(true)
         }
 ) : MonsterService {
+    var counter=0
+    var monsters= mutableListOf<String>()
+
+    fun update(){
+      counter++
+      monsters.clear()
+      File(monstersLocation).forEachLine {
+          monsters.add(it)
+      }
+    }
+    fun delete(){
+        if (counter>10){
+            File(monstersLocation).delete()
+        }
+    }
+
     override fun sayMessage(message: String): String {
+        update()
+        delete()
         with(cowExecutor) {
             setMessage(message)
             if (monsterConfig.random == true) {
@@ -29,73 +49,3 @@ class MonsterServiceImpl(
         }
     }
 }
-
-val monsters = listOf(
-        "bearface",
-        "beavis.zen",
-        "bud-frogs",
-        "bunny",
-        "cat",
-        "catfence",
-        "charizardvice",
-        "cheese",
-        "cower",
-        "cowfee",
-        "daemon",
-        "default",
-        "dragon-and-cow",
-        "dragon",
-        "elephant-in-snake",
-        "elephant",
-        "eyes",
-        "fence",
-        "flaming-sheep",
-        "ghostbusters",
-        "goat",
-        "hellokitty",
-        "hippie",
-        "hiya",
-        "hypno",
-        "kitty",
-        "koala",
-        "kosh",
-        "lamb",
-        "adding s",
-        "lamb2",
-        "adding s",
-        "luke-koala",
-        "mech-and-cow",
-        "meow",
-        "milk",
-        "minotaur",
-        "moofasa",
-        "mooghidjirah",
-        "moojira",
-        "moose",
-        "mutilated",
-        "psychiatrichelp",
-        "adding s",
-        "ren",
-        "roflcopter",
-        "satanic",
-        "sheep",
-        "shrug",
-        "skeleton",
-        "small",
-        "snoopy",
-        "snoopyhouse",
-        "snoopysleep",
-        "spidercow",
-        "stegosaurus",
-        "stimpy",
-        "supermilker",
-        "surgery",
-        "tableflip",
-        "adding s",
-        "three-eyes",
-        "turkey",
-        "turtle",
-        "tux",
-        "udder",
-        "www"
-)

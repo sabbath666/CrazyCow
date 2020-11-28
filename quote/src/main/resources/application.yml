@@ -1,13 +1,20 @@
+server:
+  port: 80
+
 spring:
   application:
     name: quote
-  cloud:
-    consul:
-      host: 192.168.75.75
-      discovery:
-        instance-id: ${spring.application.name}
-        prefer-ip-address: true
-        ip-address: 192.168.75.1
-      config:
-        fail-fast: false
-        enabled: false
+  boot:
+    admin:
+      client:
+        url: http://localhost:9999
+        username: admin
+        password: admin
+  zipkin:
+    base-url: 'http://zipkin:9411'
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+    enabled-by-default: true

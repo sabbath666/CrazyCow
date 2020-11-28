@@ -1,4 +1,18 @@
 server:
-  port: 8082
+  port: 8081
 
-monster.random: false
+spring:
+  application:
+    name: quote
+  boot:
+    admin:
+      client:
+        url: http://localhost:9999
+        username: admin
+        password: admin
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+    enabled-by-default: true

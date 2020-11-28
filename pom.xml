@@ -13,6 +13,7 @@
         <module>quote</module>
         <module>monster</module>
         <module>say</module>
+        <module>admin</module>
     </modules>
 
 </project>

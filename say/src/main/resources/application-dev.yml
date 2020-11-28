@@ -1,8 +1,21 @@
 server:
   port: 8083
 
-quote.url: "http://quote/getQuote"
-monster.url: "http://monster/sayMessage"
+spring:
+  application:
+    name: say
+  boot:
+    admin:
+      client:
+        url: http://localhost:9999
+        username: admin
+        password: admin
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+    enabled-by-default: true
 
-
-monster.random: false
+quote.url: "http://localhost:8081/getQuote"
+monster.url: "http://localhost:8082/sayMessage"
